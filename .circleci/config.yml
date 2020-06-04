@@ -10,11 +10,11 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
 
       - checkout # check out source code to working directory
-      - run: cd CubeGeneratorWeb
+      - run: ls -al
 
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
-          - run: cd CubeGeneratorWeb
+
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
       - run: mvn dependency:go-offline # gets the project dependencies
