@@ -39,7 +39,7 @@ jobs: # a collection of steps
      enabled: true
    steps:
      - checkout
-     - run: docker build -t prashantdec25/tomcat Dockerfile .
+     - run: docker build Dockerfile .
       
 workflows:
   version: 2
