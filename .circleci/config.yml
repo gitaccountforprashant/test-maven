@@ -39,10 +39,7 @@ jobs: # a collection of steps
      enabled: true
    steps:
      - checkout
-     - run:
-         name: Deploy Master to Heroku
-         command: |
-           - docker build -t prashantdec25/tomcat .
+     - run: docker build -t prashantdec25/tomcat .
       
 workflows:
   version: 2
