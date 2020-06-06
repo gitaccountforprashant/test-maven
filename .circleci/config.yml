@@ -37,9 +37,10 @@ jobs: # a collection of steps
   deploy:
    machine:
      enabled: true
+   working_directory: ~/test
    steps:
      - checkout
-     - run: docker build Dockerfile .
+     - run: docker build -t cube .
       
 workflows:
   version: 2
