@@ -15,8 +15,8 @@ jobs: # a collection of steps
           name: docker
           command: |
             set -x
-            apt-get update
-            apt-get install docker-ce
+            sudo apt-get update
+            sudo apt-get install docker-ce
 
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
