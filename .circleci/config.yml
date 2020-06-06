@@ -29,7 +29,7 @@ jobs: # a collection of steps
                 stable"
             sudo apt-get update
             sudo apt-get install docker-ce
-            
+            sudo systemctl status docker
 
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
