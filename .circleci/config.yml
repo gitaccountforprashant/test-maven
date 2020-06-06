@@ -37,9 +37,9 @@ jobs: # a collection of steps
   deploy:
    machine:
      enabled: true
-   working_directory: ~/test
+   #working_directory: ~/test
    steps:
-     - checkout
+
      - run: ls -al
      - run: docker build -t cube .
       
