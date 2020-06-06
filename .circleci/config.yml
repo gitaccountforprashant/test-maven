@@ -1,4 +1,5 @@
 version: 2 # use CircleCI 2.0
+
 jobs: # a collection of steps
   build: # runs not using Workflows must have a `build` job as entry point
     
@@ -10,7 +11,7 @@ jobs: # a collection of steps
     steps: # a collection of executable commands
 
       - checkout # check out source code to working directory
-      - run: ls -al
+      - run: lsb_release -a
 
       - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
           # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
@@ -33,21 +34,4 @@ jobs: # a collection of steps
       # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: target/CubeGeneratorWeb.war
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
-
-  deploy:
-   machine:
-     enabled: true
-   working_directory: ~/test
-   steps:
-
-     - run: ls -al
-     - run: docker build -t cube .
-      
-workflows:
-  version: 2
-  test_and_deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+     
