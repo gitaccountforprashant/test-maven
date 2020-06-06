@@ -24,7 +24,8 @@ jobs: # a collection of steps
             - ~/.m2
           key: circleci-demo-java-spring-{{ checksum "pom.xml" }}
       
-      - run: mvn package # run the actual tests
+      - run: mvn package # run the actual tests  
+      
       
       
       
@@ -32,5 +33,21 @@ jobs: # a collection of steps
       # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
           path: target/CubeGeneratorWeb.war
       # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
-
-      - run: docker build -t prashantdec25/tomcat .
+   deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          command: |
+            - docker build -t prashantdec25/cube .
+      
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
