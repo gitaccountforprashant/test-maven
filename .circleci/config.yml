@@ -16,7 +16,6 @@ jobs: # a collection of steps
           command: |
             set -x
             sudo apt-get update
-            sudo apt-get install docker-ce
             sudo apt-get install \
                 apt-transport-https \
                 ca-certificates \
